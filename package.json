@@ -1,0 +1,24 @@
+{
+  "name": "chalian-joyeria",
+  "version": "1.0.0",
+  "description": "Sitio web de Chalian Joyería - Relojes y Joyas de Lujo",
+  "main": "index.html",
+  "scripts": {
+    "sass": "sass sass/main.scss:style/style.css --style=compressed --watch",
+    "sass:build": "sass sass/main.scss:style/style.css --style=compressed",
+    "dev": "sass sass/main.scss:style/style.css --watch",
+    "build": "sass sass/main.scss:style/style.css --style=compressed"
+  },
+  "keywords": [
+    "joyería",
+    "relojes",
+    "lujo",
+    "sass",
+    "responsive"
+  ],
+  "author": "Julian Mistrot",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.69.0"
+  }
+} 

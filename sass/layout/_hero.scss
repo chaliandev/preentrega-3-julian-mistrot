@@ -1,0 +1,322 @@
+// ==========================================================================
+// HERO SECTION - CHALIAN JOYERÍA
+// ==========================================================================
+
+.hero-section {
+  height: 100vh;
+  background: $gradient-hero,
+              url('https://images.unsplash.com/photo-1523170335258-f5c51c2a185b?w=1920&h=1080&fit=crop') center/cover;
+  @include flex-column-center;
+  text-align: center;
+  color: $white;
+  position: relative;
+  overflow: hidden;
+  
+  @include respond-to-max(md) {
+    height: 80vh;
+    min-height: 600px;
+  }
+  
+  @include respond-to-max(sm) {
+    height: 70vh;
+    min-height: 500px;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba($primary-color, 0.7), rgba($secondary-color, 0.1));
+    z-index: 1;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: $spacing-lg;
+    @include fade-in-up(0.2s);
+    
+    @include respond-to-max(md) {
+      padding: $spacing-md;
+    }
+    
+    @include respond-to-max(sm) {
+      padding: $spacing-sm;
+    }
+    
+    > * {
+      opacity: 0;
+      animation: fadeInUp 1.2s ease-out forwards;
+    }
+    
+    > *:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+    
+    > *:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+    
+    > *:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+  }
+  
+  .hero-title {
+    @include heading-style(clamp(2.5rem, 6vw, 4.5rem), $font-weight-bold);
+    margin-bottom: $spacing-md;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    line-height: 1.2;
+    
+    @include respond-to-max(md) {
+      font-size: 2.5rem;
+    }
+    
+    @include respond-to-max(sm) {
+      font-size: 2rem;
+    }
+  }
+  
+  .hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: $spacing-lg;
+    opacity: 0.9;
+    font-weight: $font-weight-normal;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    @include respond-to-max(md) {
+      font-size: 1.1rem;
+    }
+    
+    @include respond-to-max(sm) {
+      font-size: 1rem;
+    }
+  }
+  
+  .hero-buttons {
+    @include flex-center;
+    gap: $spacing-md;
+    flex-wrap: wrap;
+    
+    @include respond-to-max(sm) {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .btn {
+      @include respond-to-max(sm) {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  }
+  
+  // Hero variants
+  &-minimal {
+    height: 60vh;
+    background: $gradient-primary;
+    
+    .hero-content {
+      max-width: 600px;
+    }
+  }
+  
+  &-fullscreen {
+    height: 100vh;
+    
+    .hero-content {
+      max-width: 1000px;
+    }
+  }
+  
+  &-video {
+    position: relative;
+    
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    
+    &::before {
+      background: linear-gradient(45deg, rgba($primary-color, 0.8), rgba($secondary-color, 0.2));
+    }
+  }
+  
+  &-parallax {
+    background-attachment: fixed;
+    
+    @include respond-to-max(md) {
+      background-attachment: scroll;
+    }
+  }
+  
+  &-slider {
+    .hero-slide {
+      height: 100vh;
+      @include flex-column-center;
+      position: relative;
+      
+      &.active {
+        .hero-content {
+          animation: fadeInUp 1s ease-out;
+        }
+      }
+    }
+    
+    .hero-slide-nav {
+      position: absolute;
+      bottom: $spacing-lg;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      @include flex-center;
+      gap: $spacing-sm;
+      
+      .slide-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba($white, 0.5);
+        cursor: pointer;
+        transition: $transition;
+        
+        &.active {
+          background: $secondary-color;
+          transform: scale(1.2);
+        }
+        
+        &:hover {
+          background: $secondary-color;
+        }
+      }
+    }
+  }
+}
+
+// Hero with floating elements
+.hero-floating {
+  .floating-element {
+    position: absolute;
+    z-index: 1;
+    opacity: 0.1;
+    animation: float 6s ease-in-out infinite;
+    
+    &-1 {
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    
+    &-2 {
+      top: 60%;
+      right: 15%;
+      animation-delay: 2s;
+    }
+    
+    &-3 {
+      bottom: 30%;
+      left: 20%;
+      animation-delay: 4s;
+    }
+  }
+}
+
+// Hero with scroll indicator
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: $spacing-lg;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  color: $white;
+  text-align: center;
+  
+  .scroll-text {
+    font-size: 0.875rem;
+    margin-bottom: $spacing-xs;
+    opacity: 0.8;
+  }
+  
+  .scroll-arrow {
+    width: 30px;
+    height: 30px;
+    border: 2px solid $white;
+    border-radius: 50%;
+    @include flex-center;
+    margin: 0 auto;
+    animation: bounce 2s infinite;
+    
+    i {
+      font-size: 0.75rem;
+      color: $white;
+    }
+  }
+}
+
+// Hero with background particles
+.hero-particles {
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: $secondary-color;
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite;
+    
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}) {
+        left: random(100) * 1%;
+        top: random(100) * 1%;
+        animation-delay: random(8) * 1s;
+        animation-duration: (random(4) + 4) * 1s;
+      }
+    }
+  }
+}
+
+// Hero responsive adjustments
+@include respond-to-max(md) {
+  .hero-section {
+    .hero-content {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+
+@include respond-to-max(sm) {
+  .hero-section {
+    .hero-content {
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+    }
+    
+    .hero-buttons {
+      .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+    }
+  }
+} 

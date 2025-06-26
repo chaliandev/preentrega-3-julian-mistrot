@@ -1,0 +1,555 @@
+// ==========================================================================
+// GRID SYSTEM - CHALIAN JOYERÍA
+// ==========================================================================
+
+// Grid container
+.container {
+  width: 100%;
+  max-width: map-get($container-max-widths, xl);
+  margin: 0 auto;
+  padding: 0 $spacing-sm;
+  
+  @include respond-to(sm) {
+    max-width: map-get($container-max-widths, sm);
+  }
+  
+  @include respond-to(md) {
+    max-width: map-get($container-max-widths, md);
+  }
+  
+  @include respond-to(lg) {
+    max-width: map-get($container-max-widths, lg);
+  }
+  
+  @include respond-to(xl) {
+    max-width: map-get($container-max-widths, xl);
+  }
+  
+  @include respond-to(xxl) {
+    max-width: map-get($container-max-widths, xxl);
+  }
+  
+  &-fluid {
+    max-width: none;
+  }
+  
+  &-narrow {
+    max-width: 800px;
+  }
+  
+  &-wide {
+    max-width: 1400px;
+  }
+}
+
+// Row
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -($spacing-sm / 2);
+  
+  &-no-gutters {
+    margin: 0;
+    
+    > [class*="col-"] {
+      padding: 0;
+    }
+  }
+  
+  &-g-0 {
+    margin: 0;
+    
+    > [class*="col-"] {
+      padding: 0;
+    }
+  }
+  
+  &-g-1 {
+    margin: 0 -($spacing-xs / 2);
+    
+    > [class*="col-"] {
+      padding: 0 ($spacing-xs / 2);
+    }
+  }
+  
+  &-g-2 {
+    margin: 0 -($spacing-sm / 2);
+    
+    > [class*="col-"] {
+      padding: 0 ($spacing-sm / 2);
+    }
+  }
+  
+  &-g-3 {
+    margin: 0 -($spacing-md / 2);
+    
+    > [class*="col-"] {
+      padding: 0 ($spacing-md / 2);
+    }
+  }
+  
+  &-g-4 {
+    margin: 0 -($spacing-lg / 2);
+    
+    > [class*="col-"] {
+      padding: 0 ($spacing-lg / 2);
+    }
+  }
+  
+  &-g-5 {
+    margin: 0 -($spacing-xl / 2);
+    
+    > [class*="col-"] {
+      padding: 0 ($spacing-xl / 2);
+    }
+  }
+}
+
+// Columns
+[class*="col-"] {
+  position: relative;
+  width: 100%;
+  padding: 0 ($spacing-sm / 2);
+}
+
+// Generate column classes
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    flex: 0 0 percentage($i / 12);
+    max-width: percentage($i / 12);
+  }
+}
+
+// Responsive columns
+@each $breakpoint, $width in (
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  xxl: $breakpoint-xxl
+) {
+  @include respond-to($breakpoint) {
+    @for $i from 1 through 12 {
+      .col-#{$breakpoint}-#{$i} {
+        flex: 0 0 percentage($i / 12);
+        max-width: percentage($i / 12);
+      }
+    }
+  }
+}
+
+// Auto columns
+.col-auto {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: 100%;
+}
+
+@each $breakpoint, $width in (
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  xxl: $breakpoint-xxl
+) {
+  @include respond-to($breakpoint) {
+    .col-#{$breakpoint}-auto {
+      flex: 0 0 auto;
+      width: auto;
+      max-width: 100%;
+    }
+  }
+}
+
+// Order utilities
+@for $i from 0 through 12 {
+  .order-#{$i} {
+    order: $i;
+  }
+}
+
+@each $breakpoint, $width in (
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  xxl: $breakpoint-xxl
+) {
+  @include respond-to($breakpoint) {
+    @for $i from 0 through 12 {
+      .order-#{$breakpoint}-#{$i} {
+        order: $i;
+      }
+    }
+  }
+}
+
+// Flex utilities
+.d-flex {
+  display: flex;
+}
+
+.d-inline-flex {
+  display: inline-flex;
+}
+
+@each $breakpoint, $width in (
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  xxl: $breakpoint-xxl
+) {
+  @include respond-to($breakpoint) {
+    .d-#{$breakpoint}-flex {
+      display: flex;
+    }
+    
+    .d-#{$breakpoint}-inline-flex {
+      display: inline-flex;
+    }
+  }
+}
+
+// Flex direction
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-column-reverse {
+  flex-direction: column-reverse;
+}
+
+@each $breakpoint, $width in (
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  xxl: $breakpoint-xxl
+) {
+  @include respond-to($breakpoint) {
+    .flex-#{$breakpoint}-row {
+      flex-direction: row;
+    }
+    
+    .flex-#{$breakpoint}-row-reverse {
+      flex-direction: row-reverse;
+    }
+    
+    .flex-#{$breakpoint}-column {
+      flex-direction: column;
+    }
+    
+    .flex-#{$breakpoint}-column-reverse {
+      flex-direction: column-reverse;
+    }
+  }
+}
+
+// Flex wrap
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.flex-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+@each $breakpoint, $width in (
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  xxl: $breakpoint-xxl
+) {
+  @include respond-to($breakpoint) {
+    .flex-#{$breakpoint}-wrap {
+      flex-wrap: wrap;
+    }
+    
+    .flex-#{$breakpoint}-nowrap {
+      flex-wrap: nowrap;
+    }
+    
+    .flex-#{$breakpoint}-wrap-reverse {
+      flex-wrap: wrap-reverse;
+    }
+  }
+}
+
+// Justify content
+.justify-content-start {
+  justify-content: flex-start;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-around {
+  justify-content: space-around;
+}
+
+.justify-content-evenly {
+  justify-content: space-evenly;
+}
+
+@each $breakpoint, $width in (
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  xxl: $breakpoint-xxl
+) {
+  @include respond-to($breakpoint) {
+    .justify-content-#{$breakpoint}-start {
+      justify-content: flex-start;
+    }
+    
+    .justify-content-#{$breakpoint}-end {
+      justify-content: flex-end;
+    }
+    
+    .justify-content-#{$breakpoint}-center {
+      justify-content: center;
+    }
+    
+    .justify-content-#{$breakpoint}-between {
+      justify-content: space-between;
+    }
+    
+    .justify-content-#{$breakpoint}-around {
+      justify-content: space-around;
+    }
+    
+    .justify-content-#{$breakpoint}-evenly {
+      justify-content: space-evenly;
+    }
+  }
+}
+
+// Align items
+.align-items-start {
+  align-items: flex-start;
+}
+
+.align-items-end {
+  align-items: flex-end;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-items-baseline {
+  align-items: baseline;
+}
+
+.align-items-stretch {
+  align-items: stretch;
+}
+
+@each $breakpoint, $width in (
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  xxl: $breakpoint-xxl
+) {
+  @include respond-to($breakpoint) {
+    .align-items-#{$breakpoint}-start {
+      align-items: flex-start;
+    }
+    
+    .align-items-#{$breakpoint}-end {
+      align-items: flex-end;
+    }
+    
+    .align-items-#{$breakpoint}-center {
+      align-items: center;
+    }
+    
+    .align-items-#{$breakpoint}-baseline {
+      align-items: baseline;
+    }
+    
+    .align-items-#{$breakpoint}-stretch {
+      align-items: stretch;
+    }
+  }
+}
+
+// Align self
+.align-self-start {
+  align-self: flex-start;
+}
+
+.align-self-end {
+  align-self: flex-end;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+.align-self-baseline {
+  align-self: baseline;
+}
+
+.align-self-stretch {
+  align-self: stretch;
+}
+
+@each $breakpoint, $width in (
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  xxl: $breakpoint-xxl
+) {
+  @include respond-to($breakpoint) {
+    .align-self-#{$breakpoint}-start {
+      align-self: flex-start;
+    }
+    
+    .align-self-#{$breakpoint}-end {
+      align-self: flex-end;
+    }
+    
+    .align-self-#{$breakpoint}-center {
+      align-self: center;
+    }
+    
+    .align-self-#{$breakpoint}-baseline {
+      align-self: baseline;
+    }
+    
+    .align-self-#{$breakpoint}-stretch {
+      align-self: stretch;
+    }
+  }
+}
+
+// Flex grow and shrink
+.flex-fill {
+  flex: 1 1 auto;
+}
+
+.flex-grow-0 {
+  flex-grow: 0;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+.flex-shrink-1 {
+  flex-shrink: 1;
+}
+
+@each $breakpoint, $width in (
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  xxl: $breakpoint-xxl
+) {
+  @include respond-to($breakpoint) {
+    .flex-#{$breakpoint}-fill {
+      flex: 1 1 auto;
+    }
+    
+    .flex-#{$breakpoint}-grow-0 {
+      flex-grow: 0;
+    }
+    
+    .flex-#{$breakpoint}-grow-1 {
+      flex-grow: 1;
+    }
+    
+    .flex-#{$breakpoint}-shrink-0 {
+      flex-shrink: 0;
+    }
+    
+    .flex-#{$breakpoint}-shrink-1 {
+      flex-shrink: 1;
+    }
+  }
+}
+
+// Grid utilities
+.g-0 {
+  --bs-gutter-x: 0;
+  --bs-gutter-y: 0;
+}
+
+.g-1 {
+  --bs-gutter-x: 0.25rem;
+  --bs-gutter-y: 0.25rem;
+}
+
+.g-2 {
+  --bs-gutter-x: 0.5rem;
+  --bs-gutter-y: 0.5rem;
+}
+
+.g-3 {
+  --bs-gutter-x: 1rem;
+  --bs-gutter-y: 1rem;
+}
+
+.g-4 {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 1.5rem;
+}
+
+.g-5 {
+  --bs-gutter-x: 3rem;
+  --bs-gutter-y: 3rem;
+}
+
+// Responsive grid adjustments
+@include respond-to-max(md) {
+  .row {
+    margin: 0 -($spacing-xs / 2);
+    
+    > [class*="col-"] {
+      padding: 0 ($spacing-xs / 2);
+    }
+  }
+}
+
+@include respond-to-max(sm) {
+  .row {
+    margin: 0;
+    
+    > [class*="col-"] {
+      padding: 0;
+      margin-bottom: $spacing-sm;
+    }
+  }
+} 

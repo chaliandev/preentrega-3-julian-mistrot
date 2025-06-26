@@ -1,0 +1,203 @@
+// ==========================================================================
+// BUTTONS - CHALIAN JOYERÍA
+// ==========================================================================
+
+// Base button styles
+.btn {
+  @include button-base;
+  
+  // Size variants
+  &-sm {
+    padding: 8px 20px;
+    font-size: 0.875rem;
+  }
+  
+  &-lg {
+    padding: 15px 40px;
+    font-size: 1.125rem;
+  }
+  
+  // Primary button
+  &-primary-custom {
+    @include button-primary;
+  }
+  
+  // Outline button
+  &-outline-custom {
+    @include button-outline;
+  }
+  
+  // Secondary button
+  &-secondary {
+    @include button-base;
+    background: $primary-color;
+    color: $white;
+    box-shadow: $shadow-soft;
+    
+    &:hover {
+      background: lighten($primary-color, 10%);
+      transform: translateY(-2px);
+      box-shadow: $shadow-strong;
+      color: $white;
+    }
+  }
+  
+  // Ghost button
+  &-ghost {
+    @include button-base;
+    background: transparent;
+    color: $white;
+    border: 2px solid $white;
+    
+    &:hover {
+      background: $white;
+      color: $primary-color;
+      transform: translateY(-2px);
+    }
+  }
+  
+  // Icon button
+  &-icon {
+    @include flex-center;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border-radius: 50%;
+    background: $gradient-gold;
+    color: $primary-color;
+    transition: $transition;
+    
+    &:hover {
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: $shadow-gold;
+      color: $primary-color;
+    }
+    
+    i {
+      font-size: 1.2rem;
+    }
+  }
+  
+  // Social media buttons
+  &-social {
+    @include flex-center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: $gradient-gold;
+    color: $primary-color;
+    transition: $transition;
+    text-decoration: none;
+    
+    &:hover {
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: $shadow-gold;
+      color: $primary-color;
+    }
+    
+    i {
+      font-size: 1.2rem;
+    }
+  }
+  
+  // Disabled state
+  &:disabled,
+  &.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  
+  // Loading state
+  &-loading {
+    position: relative;
+    color: transparent;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      margin: -10px 0 0 -10px;
+      border: 2px solid transparent;
+      border-top: 2px solid currentColor;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+  }
+}
+
+// Button groups
+.btn-group {
+  display: flex;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+  @include respond-to-max(sm) {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn {
+    margin: 0;
+  }
+}
+
+// Floating action button
+.btn-floating {
+  position: fixed;
+  bottom: $spacing-lg;
+  right: $spacing-lg;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: $gradient-gold;
+  color: $primary-color;
+  @include flex-center;
+  box-shadow: $shadow-gold;
+  z-index: $z-index-fixed;
+  transition: $transition;
+  
+  &:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.4);
+    color: $primary-color;
+  }
+  
+  i {
+    font-size: 1.5rem;
+  }
+  
+  @include respond-to-max(md) {
+    bottom: $spacing-sm;
+    right: $spacing-sm;
+    width: 50px;
+    height: 50px;
+    
+    i {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+// Back to top button
+.btn-back-to-top {
+  @extend .btn-floating;
+  opacity: 0;
+  visibility: hidden;
+  transition: $transition;
+  
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// Loading animation
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+} 

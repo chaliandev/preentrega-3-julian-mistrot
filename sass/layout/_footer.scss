@@ -1,0 +1,383 @@
+// ==========================================================================
+// FOOTER - CHALIAN JOYERÍA
+// ==========================================================================
+
+.footer {
+  &-custom {
+    background: $gradient-primary;
+    color: $white;
+    padding: $spacing-xl 0 $spacing-lg;
+    margin-top: $spacing-xxl;
+    
+    h5 {
+      color: $secondary-color;
+      font-weight: $font-weight-bold;
+      margin-bottom: $spacing-md;
+      font-size: 1.25rem;
+    }
+    
+    p {
+      color: rgba($white, 0.8);
+      line-height: 1.6;
+    }
+    
+    a {
+      color: rgba($white, 0.8);
+      text-decoration: none;
+      transition: $transition;
+      
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+    
+    ul {
+      list-style: none;
+      padding: 0;
+      
+      li {
+        margin-bottom: $spacing-xs;
+        
+        a {
+          display: block;
+          padding: 4px 0;
+          transition: $transition;
+          
+          &:hover {
+            transform: translateX(5px);
+          }
+        }
+      }
+    }
+  }
+  
+  &-top {
+    padding-bottom: $spacing-lg;
+    border-bottom: 1px solid rgba($white, 0.1);
+    margin-bottom: $spacing-lg;
+  }
+  
+  &-bottom {
+    padding-top: $spacing-md;
+    border-top: 1px solid rgba($white, 0.1);
+    text-align: center;
+    
+    p {
+      margin: 0;
+      font-size: 0.875rem;
+      color: rgba($white, 0.6);
+    }
+  }
+  
+  &-newsletter {
+    background: rgba($white, 0.05);
+    padding: $spacing-lg;
+    border-radius: $border-radius-lg;
+    margin-bottom: $spacing-lg;
+    
+    h5 {
+      margin-bottom: $spacing-sm;
+    }
+    
+    p {
+      margin-bottom: $spacing-md;
+    }
+    
+    .newsletter-form {
+      display: flex;
+      gap: $spacing-sm;
+      
+      @include respond-to-max(sm) {
+        flex-direction: column;
+      }
+      
+      .form-control {
+        background: rgba($white, 0.1);
+        border: 1px solid rgba($white, 0.2);
+        color: $white;
+        
+        &::placeholder {
+          color: rgba($white, 0.7);
+        }
+        
+        &:focus {
+          background: rgba($white, 0.15);
+          border-color: $secondary-color;
+        }
+      }
+      
+      .btn {
+        white-space: nowrap;
+      }
+    }
+  }
+  
+  &-contact {
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: $spacing-sm;
+      
+      i {
+        color: $secondary-color;
+        margin-right: $spacing-sm;
+        font-size: 1.2rem;
+        width: 20px;
+        text-align: center;
+      }
+      
+      span {
+        color: rgba($white, 0.8);
+      }
+    }
+  }
+  
+  &-social {
+    .social-icons {
+      @include flex-center;
+      gap: $spacing-sm;
+      margin-top: $spacing-md;
+      
+      .social-icon {
+        @include flex-center;
+        width: 50px;
+        height: 50px;
+        background: $gradient-gold;
+        color: $primary-color;
+        border-radius: 50%;
+        text-decoration: none;
+        transition: $transition;
+        font-size: 1.2rem;
+        
+        &:hover {
+          transform: translateY(-3px) scale(1.1);
+          box-shadow: $shadow-gold;
+          color: $primary-color;
+        }
+      }
+    }
+  }
+  
+  &-links {
+    .footer-link {
+      display: block;
+      padding: 6px 0;
+      color: rgba($white, 0.8);
+      text-decoration: none;
+      transition: $transition;
+      position: relative;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background: $gradient-gold;
+        transition: $transition;
+      }
+      
+      &:hover {
+        color: $secondary-color;
+        transform: translateX(5px);
+        
+        &::before {
+          width: 20px;
+        }
+      }
+    }
+  }
+  
+  &-brand {
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+      margin-bottom: $spacing-md;
+      
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid $secondary-color;
+      }
+      
+      span {
+        font-size: 1.5rem;
+        font-weight: $font-weight-bold;
+        color: $white;
+      }
+    }
+    
+    .footer-description {
+      color: rgba($white, 0.8);
+      line-height: 1.6;
+      margin-bottom: $spacing-md;
+    }
+  }
+  
+  &-payment {
+    .payment-methods {
+      display: flex;
+      gap: $spacing-xs;
+      flex-wrap: wrap;
+      margin-top: $spacing-sm;
+      
+      .payment-icon {
+        width: 40px;
+        height: 25px;
+        background: rgba($white, 0.1);
+        border-radius: 4px;
+        @include flex-center;
+        font-size: 0.75rem;
+        color: rgba($white, 0.7);
+      }
+    }
+  }
+  
+  &-back-to-top {
+    position: fixed;
+    bottom: $spacing-lg;
+    right: $spacing-lg;
+    width: 50px;
+    height: 50px;
+    background: $gradient-gold;
+    color: $primary-color;
+    border-radius: 50%;
+    @include flex-center;
+    text-decoration: none;
+    transition: $transition;
+    opacity: 0;
+    visibility: hidden;
+    z-index: $z-index-fixed;
+    
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    &:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: $shadow-gold;
+      color: $primary-color;
+    }
+    
+    i {
+      font-size: 1.2rem;
+    }
+    
+    @include respond-to-max(md) {
+      bottom: $spacing-sm;
+      right: $spacing-sm;
+      width: 45px;
+      height: 45px;
+      
+      i {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+// Footer variants
+.footer {
+  &-minimal {
+    background: $primary-color;
+    padding: $spacing-lg 0;
+    
+    .footer-content {
+      text-align: center;
+    }
+  }
+  
+  &-gradient {
+    background: $gradient-primary;
+  }
+  
+  &-dark {
+    background: $black;
+  }
+  
+  &-light {
+    background: $accent-color;
+    color: $text-dark;
+    
+    h5 {
+      color: $primary-color;
+    }
+    
+    a {
+      color: $text-light;
+      
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+    
+    p {
+      color: $text-light;
+    }
+  }
+}
+
+// Footer responsive
+@include respond-to-max(md) {
+  .footer {
+    &-custom {
+      padding: $spacing-lg 0 $spacing-md;
+      
+      h5 {
+        font-size: 1.1rem;
+        margin-bottom: $spacing-sm;
+      }
+    }
+    
+    &-newsletter {
+      padding: $spacing-md;
+      
+      .newsletter-form {
+        .form-control {
+          font-size: 0.9rem;
+        }
+      }
+    }
+    
+    &-brand {
+      .footer-logo {
+        img {
+          width: 40px;
+          height: 40px;
+        }
+        
+        span {
+          font-size: 1.25rem;
+        }
+      }
+    }
+  }
+}
+
+@include respond-to-max(sm) {
+  .footer {
+    &-custom {
+      text-align: center;
+      
+      .footer-section {
+        margin-bottom: $spacing-lg;
+      }
+    }
+    
+    &-social {
+      .social-icons {
+        justify-content: center;
+      }
+    }
+    
+    &-contact {
+      .contact-item {
+        justify-content: center;
+      }
+    }
+  }
+} 

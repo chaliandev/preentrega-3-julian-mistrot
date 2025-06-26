@@ -1,0 +1,205 @@
+// ==========================================================================
+// MIXINS - CHALIAN JOYERÍA
+// ==========================================================================
+
+// Media Queries
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == md {
+    @media (min-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) { @content; }
+  } @else if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) { @content; }
+  } @else if $breakpoint == xxl {
+    @media (min-width: $breakpoint-xxl) { @content; }
+  }
+}
+
+@mixin respond-to-max($breakpoint) {
+  @if $breakpoint == sm {
+    @media (max-width: ($breakpoint-sm - 1px)) { @content; }
+  } @else if $breakpoint == md {
+    @media (max-width: ($breakpoint-md - 1px)) { @content; }
+  } @else if $breakpoint == lg {
+    @media (max-width: ($breakpoint-lg - 1px)) { @content; }
+  } @else if $breakpoint == xl {
+    @media (max-width: ($breakpoint-xl - 1px)) { @content; }
+  }
+}
+
+// Flexbox
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+// Typography
+@mixin text-gradient($gradient: $gradient-gold) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@mixin heading-style($size: 2.5rem, $weight: $font-weight-bold) {
+  font-family: $font-family-secondary;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: 1.2;
+}
+
+// Buttons
+@mixin button-base {
+  font-weight: $font-weight-semibold;
+  padding: 12px 30px;
+  border-radius: $border-radius-lg;
+  transition: $transition;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+}
+
+@mixin button-primary {
+  @include button-base;
+  background: $gradient-gold;
+  color: $primary-color;
+  box-shadow: $shadow-gold;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+    color: $primary-color;
+  }
+}
+
+@mixin button-outline {
+  @include button-base;
+  border: 2px solid $secondary-color;
+  color: $secondary-color;
+  background: transparent;
+  
+  &:hover {
+    background: $secondary-color;
+    color: $primary-color;
+    transform: translateY(-2px);
+    box-shadow: $shadow-gold;
+  }
+}
+
+// Cards
+@mixin card-base {
+  border: none;
+  border-radius: $border-radius;
+  box-shadow: $shadow-soft;
+  transition: $transition;
+  overflow: hidden;
+  background: $white;
+  
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: $shadow-strong;
+  }
+}
+
+// Animations
+@mixin fade-in-up($delay: 0s) {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1.2s ease-out $delay forwards;
+}
+
+@mixin hover-lift {
+  transition: $transition;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+@mixin hover-scale($scale: 1.05) {
+  transition: $transition;
+  
+  &:hover {
+    transform: scale($scale);
+  }
+}
+
+// Shadows
+@mixin shadow-soft {
+  box-shadow: $shadow-soft;
+}
+
+@mixin shadow-strong {
+  box-shadow: $shadow-strong;
+}
+
+@mixin shadow-gold {
+  box-shadow: $shadow-gold;
+}
+
+// Background gradients
+@mixin gradient-overlay($opacity: 0.8) {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba($primary-color, $opacity), rgba($secondary-color, 0.1));
+    z-index: 1;
+  }
+}
+
+// Section styling
+@mixin section-base {
+  padding: $spacing-xxl 0;
+  
+  @include respond-to-max(md) {
+    padding: $spacing-xl 0;
+  }
+}
+
+@mixin section-title {
+  @include heading-style;
+  margin-bottom: $spacing-xl;
+  position: relative;
+  display: inline-block;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: $gradient-gold;
+  }
+} 

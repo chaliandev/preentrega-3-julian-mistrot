@@ -1,0 +1,466 @@
+// ==========================================================================
+// HOME PAGE - CHALIAN JOYERÍA
+// ==========================================================================
+
+// Featured products section
+.featured-products {
+  .product-grid {
+    display: grid;
+    gap: $spacing-lg;
+    
+    @include respond-to(sm) {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    
+    @include respond-to(lg) {
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+  }
+  
+  .product-card {
+    @extend .card-custom;
+    position: relative;
+    overflow: hidden;
+    
+    .product-image {
+      position: relative;
+      overflow: hidden;
+      height: 250px;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: $transition;
+      }
+      
+      .product-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba($primary-color, 0.8) 0%, rgba($secondary-color, 0.2) 100%);
+        opacity: 0;
+        transition: $transition;
+        @include flex-column-center;
+        
+        .overlay-content {
+          text-align: center;
+          color: $white;
+          transform: translateY(20px);
+          transition: $transition;
+        }
+      }
+    }
+    
+    &:hover {
+      .product-image {
+        img {
+          transform: scale(1.1);
+        }
+        
+        .product-overlay {
+          opacity: 1;
+          
+          .overlay-content {
+            transform: translateY(0);
+          }
+        }
+      }
+    }
+    
+    .product-info {
+      padding: $spacing-lg;
+      
+      .product-title {
+        @include heading-style(1.5rem, $font-weight-bold);
+        color: $primary-color;
+        margin-bottom: $spacing-sm;
+      }
+      
+      .product-description {
+        color: $text-light;
+        margin-bottom: $spacing-md;
+        line-height: 1.6;
+      }
+      
+      .product-price {
+        font-size: 1.25rem;
+        font-weight: $font-weight-bold;
+        color: $secondary-color;
+        margin-bottom: $spacing-md;
+      }
+    }
+  }
+}
+
+// Why choose us section
+.why-choose-us {
+  background: linear-gradient(135deg, $accent-color 0%, #e9ecef 100%);
+  
+  .feature-grid {
+    display: grid;
+    gap: $spacing-xl;
+    
+    @include respond-to(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include respond-to(lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .feature-item {
+    text-align: center;
+    padding: $spacing-lg;
+    
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto $spacing-md;
+      @include flex-center;
+      background: $gradient-gold;
+      border-radius: 50%;
+      color: $primary-color;
+      font-size: 2rem;
+      transition: $transition;
+      @include shadow-gold;
+    }
+    
+    &:hover .feature-icon {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 15px 40px rgba($secondary-color, 0.4);
+    }
+    
+    .feature-title {
+      @include heading-style(1.25rem, $font-weight-bold);
+      color: $primary-color;
+      margin-bottom: $spacing-sm;
+    }
+    
+    .feature-description {
+      color: $text-light;
+      line-height: 1.6;
+    }
+  }
+}
+
+// Testimonials section
+.testimonials {
+  background: $primary-color;
+  color: $white;
+  
+  .testimonial-slider {
+    position: relative;
+    
+    .testimonial-item {
+      text-align: center;
+      padding: $spacing-xl;
+      
+      .testimonial-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin: 0 auto $spacing-lg;
+        border: 4px solid $secondary-color;
+        object-fit: cover;
+        @include shadow-gold;
+      }
+      
+      .testimonial-quote {
+        font-size: 1.2rem;
+        font-style: italic;
+        margin-bottom: $spacing-lg;
+        line-height: 1.6;
+        position: relative;
+        
+        &::before,
+        &::after {
+          content: '"';
+          font-size: 3rem;
+          color: $secondary-color;
+          position: absolute;
+          top: -20px;
+        }
+        
+        &::before {
+          left: -30px;
+        }
+        
+        &::after {
+          right: -30px;
+        }
+      }
+      
+      .testimonial-author {
+        font-weight: $font-weight-bold;
+        font-size: 1.1rem;
+        margin-bottom: 4px;
+      }
+      
+      .testimonial-position {
+        color: rgba($white, 0.7);
+        font-size: 0.9rem;
+      }
+    }
+  }
+  
+  .testimonial-nav {
+    @include flex-center;
+    gap: $spacing-sm;
+    margin-top: $spacing-lg;
+    
+    .nav-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba($white, 0.3);
+      cursor: pointer;
+      transition: $transition;
+      
+      &.active {
+        background: $secondary-color;
+        transform: scale(1.2);
+      }
+      
+      &:hover {
+        background: $secondary-color;
+      }
+    }
+  }
+}
+
+// Call to action section
+.cta-section {
+  background: $gradient-primary;
+  color: $white;
+  text-align: center;
+  padding: $spacing-xxl 0;
+  
+  .cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+    
+    .cta-title {
+      @include heading-style(2.5rem, $font-weight-bold);
+      color: $white;
+      margin-bottom: $spacing-md;
+      
+      @include respond-to-max(md) {
+        font-size: 2rem;
+      }
+    }
+    
+    .cta-description {
+      font-size: 1.2rem;
+      margin-bottom: $spacing-lg;
+      opacity: 0.9;
+      
+      @include respond-to-max(md) {
+        font-size: 1.1rem;
+      }
+    }
+    
+    .cta-buttons {
+      @include flex-center;
+      gap: $spacing-md;
+      flex-wrap: wrap;
+      
+      @include respond-to-max(sm) {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+}
+
+// Newsletter section
+.newsletter-section {
+  background: $accent-color;
+  padding: $spacing-xl 0;
+  
+  .newsletter-content {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    
+    .newsletter-title {
+      @include heading-style(2rem, $font-weight-bold);
+      color: $primary-color;
+      margin-bottom: $spacing-sm;
+    }
+    
+    .newsletter-description {
+      color: $text-light;
+      margin-bottom: $spacing-lg;
+    }
+    
+    .newsletter-form {
+      display: flex;
+      gap: $spacing-sm;
+      
+      @include respond-to-max(sm) {
+        flex-direction: column;
+      }
+      
+      .form-control {
+        flex: 1;
+        border-radius: 25px;
+        padding: 12px 20px;
+        border: 2px solid #e9ecef;
+        
+        &:focus {
+          border-color: $secondary-color;
+        }
+      }
+      
+      .btn {
+        border-radius: 25px;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+// Stats section
+.stats-section {
+  background: $gradient-primary;
+  color: $white;
+  padding: $spacing-xl 0;
+  
+  .stats-grid {
+    display: grid;
+    gap: $spacing-lg;
+    
+    @include respond-to(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include respond-to(lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .stat-item {
+    text-align: center;
+    padding: $spacing-lg;
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: $font-weight-bold;
+      color: $secondary-color;
+      margin-bottom: $spacing-sm;
+      display: block;
+      
+      @include respond-to-max(md) {
+        font-size: 2.5rem;
+      }
+    }
+    
+    .stat-label {
+      font-size: 1.1rem;
+      color: rgba($white, 0.8);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+// Responsive adjustments
+@include respond-to-max(md) {
+  .featured-products {
+    .product-grid {
+      gap: $spacing-md;
+    }
+  }
+  
+  .why-choose-us {
+    .feature-grid {
+      gap: $spacing-lg;
+    }
+    
+    .feature-item {
+      padding: $spacing-md;
+      
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  
+  .testimonials {
+    .testimonial-item {
+      padding: $spacing-lg;
+      
+      .testimonial-avatar {
+        width: 80px;
+        height: 80px;
+      }
+      
+      .testimonial-quote {
+        font-size: 1.1rem;
+        
+        &::before,
+        &::after {
+          font-size: 2rem;
+          top: -15px;
+        }
+        
+        &::before {
+          left: -20px;
+        }
+        
+        &::after {
+          right: -20px;
+        }
+      }
+    }
+  }
+  
+  .stats-section {
+    .stat-item {
+      padding: $spacing-md;
+    }
+  }
+}
+
+@include respond-to-max(sm) {
+  .featured-products {
+    .product-card {
+      .product-info {
+        padding: $spacing-md;
+      }
+    }
+  }
+  
+  .why-choose-us {
+    .feature-item {
+      .feature-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+      }
+      
+      .feature-title {
+        font-size: 1.1rem;
+      }
+    }
+  }
+  
+  .testimonials {
+    .testimonial-item {
+      .testimonial-quote {
+        font-size: 1rem;
+        
+        &::before,
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+} 

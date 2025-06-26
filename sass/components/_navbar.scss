@@ -1,0 +1,277 @@
+// ==========================================================================
+// NAVBAR - CHALIAN JOYERÍA
+// ==========================================================================
+
+.navbar {
+  &-custom {
+    background: $gradient-primary;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    @include shadow-soft;
+    transition: $transition;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: $z-index-fixed;
+    padding: $spacing-sm 0;
+    
+    &.scrolled {
+      background: rgba($primary-color, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: $spacing-xs 0;
+    }
+  }
+  
+  &-brand-custom {
+    @include flex-center;
+    gap: $spacing-sm;
+    font-weight: $font-weight-bold;
+    font-size: 1.5rem;
+    color: $white !important;
+    text-decoration: none;
+    transition: $transition;
+    
+    &:hover {
+      color: $secondary-color !important;
+    }
+    
+    .logo-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid $secondary-color;
+      transition: $transition;
+      object-fit: cover;
+      
+      &:hover {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 0 20px rgba($secondary-color, 0.6);
+      }
+    }
+  }
+  
+  &-nav {
+    .nav-link {
+      color: $white !important;
+      font-weight: $font-weight-medium;
+      margin: 0 8px;
+      padding: 10px 20px !important;
+      border-radius: 25px;
+      transition: $transition;
+      position: relative;
+      overflow: hidden;
+      
+      @include respond-to-max(sm) {
+        margin: 0 4px;
+        padding: 8px 12px !important;
+        font-size: 0.9rem;
+      }
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: $gradient-gold;
+        transition: $transition;
+        z-index: -1;
+      }
+      
+      &:hover::before {
+        left: 0;
+      }
+      
+      &:hover {
+        color: $primary-color !important;
+        transform: translateY(-2px);
+      }
+      
+      &.active {
+        background: $secondary-color;
+        color: $primary-color !important;
+      }
+      
+      i {
+        margin-right: 4px;
+      }
+    }
+  }
+  
+  &-toggler {
+    border: none;
+    padding: 0;
+    
+    &:focus {
+      box-shadow: none;
+    }
+    
+    .bi-list {
+      color: $white;
+      font-size: 1.5rem;
+    }
+  }
+  
+  &-collapse {
+    @include respond-to-max(lg) {
+      background: rgba($primary-color, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: $border-radius;
+      margin-top: $spacing-sm;
+      padding: $spacing-sm;
+      box-shadow: $shadow-soft;
+    }
+  }
+}
+
+// Mobile menu animations
+@include respond-to-max(lg) {
+  .navbar-collapse {
+    transition: $transition;
+    
+    &.collapsing {
+      transition: height 0.35s ease;
+    }
+    
+    &.show {
+      animation: slideDown 0.3s ease-out;
+    }
+  }
+  
+  .navbar-nav {
+    .nav-link {
+      margin: $spacing-xs 0;
+      text-align: center;
+      
+      &:hover {
+        transform: translateX(5px);
+      }
+    }
+  }
+}
+
+// Sticky navbar behavior
+.navbar-sticky {
+  position: sticky;
+  top: 0;
+  z-index: $z-index-sticky;
+}
+
+// Transparent navbar variant
+.navbar-transparent {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+  
+  &.scrolled {
+    background: rgba($primary-color, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    @include shadow-soft;
+  }
+}
+
+// Navbar with search
+.navbar-search {
+  .search-form {
+    position: relative;
+    margin-left: $spacing-md;
+    
+    @include respond-to-max(lg) {
+      margin: $spacing-sm 0;
+    }
+    
+    .form-control {
+      background: rgba($white, 0.1);
+      border: 1px solid rgba($white, 0.2);
+      color: $white;
+      border-radius: 25px;
+      padding: 8px 45px 8px 20px;
+      
+      &::placeholder {
+        color: rgba($white, 0.7);
+      }
+      
+      &:focus {
+        background: rgba($white, 0.15);
+        border-color: $secondary-color;
+        box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.25);
+        color: $white;
+      }
+    }
+    
+    .btn-search {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: $gradient-gold;
+      color: $primary-color;
+      border: none;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      @include flex-center;
+      transition: $transition;
+      
+      &:hover {
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: $shadow-gold;
+      }
+    }
+  }
+}
+
+// Navbar with notifications
+.navbar-notifications {
+  .notification-badge {
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 8px;
+      height: 8px;
+      background: $secondary-color;
+      border-radius: 50%;
+      border: 2px solid $primary-color;
+    }
+  }
+}
+
+// Animations
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive adjustments
+@include respond-to-max(md) {
+  .navbar {
+    &-brand-custom {
+      font-size: 1.25rem;
+      
+      .logo-img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    
+    &-nav .nav-link {
+      font-size: 0.9rem;
+      padding: 8px 16px !important;
+    }
+  }
+} 

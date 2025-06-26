@@ -1,0 +1,30 @@
+// =============================================================================
+// MAIN SASS FILE - CHALIAN JOYERÍA
+// =============================================================================
+
+// Base
+@import 'base/variables';
+@import 'base/mixins';
+@import 'base/reset';
+@import 'base/typography';
+
+// Components
+@import 'components/buttons';
+@import 'components/cards';
+@import 'components/navbar';
+@import 'components/forms';
+@import 'components/animations';
+
+// Layout
+@import 'layout/hero';
+@import 'layout/sections';
+@import 'layout/footer';
+@import 'layout/grid';
+
+// Pages
+@import 'pages/home';
+@import 'pages/contact';
+
+// Utilities
+@import 'utilities/helpers';
+@import 'utilities/responsive'; 

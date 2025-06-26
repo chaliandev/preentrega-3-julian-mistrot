@@ -1,0 +1,166 @@
+// ==========================================================================
+// TYPOGRAPHY - CHALIAN JOYERÍA
+// ==========================================================================
+
+// Text gradient utility
+.text-gradient {
+  @include text-gradient;
+}
+
+// Heading styles
+.hero-title {
+  @include heading-style(clamp(2.5rem, 6vw, 4.5rem), $font-weight-bold);
+  margin-bottom: $spacing-md;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  line-height: 1.2;
+  
+  @include respond-to-max(md) {
+    font-size: 2.5rem;
+  }
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  margin-bottom: $spacing-lg;
+  opacity: 0.9;
+  font-weight: $font-weight-normal;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  
+  @include respond-to-max(md) {
+    font-size: 1.1rem;
+  }
+}
+
+.section-title {
+  @include section-title;
+  
+  @include respond-to-max(md) {
+    font-size: 2rem;
+  }
+}
+
+// Text utilities
+.lead {
+  font-size: 1.25rem;
+  font-weight: $font-weight-normal;
+  line-height: 1.6;
+}
+
+.text-muted {
+  color: $text-light;
+}
+
+.text-white {
+  color: $white;
+}
+
+.text-primary {
+  color: $primary-color;
+}
+
+.text-secondary {
+  color: $secondary-color;
+}
+
+// Font weights
+.fw-light {
+  font-weight: $font-weight-light;
+}
+
+.fw-normal {
+  font-weight: $font-weight-normal;
+}
+
+.fw-medium {
+  font-weight: $font-weight-medium;
+}
+
+.fw-semibold {
+  font-weight: $font-weight-semibold;
+}
+
+.fw-bold {
+  font-weight: $font-weight-bold;
+}
+
+// Font sizes
+.fs-1 { font-size: 3rem; }
+.fs-2 { font-size: 2.5rem; }
+.fs-3 { font-size: 2rem; }
+.fs-4 { font-size: 1.5rem; }
+.fs-5 { font-size: 1.25rem; }
+.fs-6 { font-size: 1rem; }
+
+// Display classes
+.display-1 { 
+  @include heading-style(4rem, $font-weight-bold);
+  @include text-gradient;
+}
+
+.display-2 { 
+  @include heading-style(3.5rem, $font-weight-bold);
+  @include text-gradient;
+}
+
+.display-3 { 
+  @include heading-style(3rem, $font-weight-bold);
+  @include text-gradient;
+}
+
+.display-4 { 
+  @include heading-style(2.5rem, $font-weight-bold);
+  @include text-gradient;
+}
+
+.display-5 { 
+  @include heading-style(2rem, $font-weight-bold);
+  @include text-gradient;
+}
+
+.display-6 { 
+  @include heading-style(1.5rem, $font-weight-bold);
+  @include text-gradient;
+}
+
+// Responsive font sizes
+@include respond-to-max(md) {
+  .display-1 { font-size: 3rem; }
+  .display-2 { font-size: 2.5rem; }
+  .display-3 { font-size: 2rem; }
+  .display-4 { font-size: 1.75rem; }
+  .display-5 { font-size: 1.5rem; }
+  .display-6 { font-size: 1.25rem; }
+  
+  .fs-1 { font-size: 2.5rem; }
+  .fs-2 { font-size: 2rem; }
+  .fs-3 { font-size: 1.75rem; }
+  .fs-4 { font-size: 1.25rem; }
+  .fs-5 { font-size: 1.125rem; }
+  .fs-6 { font-size: 1rem; }
+}
+
+// Line heights
+.lh-1 { line-height: 1; }
+.lh-sm { line-height: 1.25; }
+.lh-base { line-height: 1.5; }
+.lh-lg { line-height: 2; }
+
+// Text transforms
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+// Letter spacing
+.ls-1 { letter-spacing: 1px; }
+.ls-2 { letter-spacing: 2px; }
+.ls-3 { letter-spacing: 3px; } 
